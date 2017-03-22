@@ -194,7 +194,7 @@ $(document).ready(function () {
         }
         var position = (offsetBase.left - offset.left) + 'px ' + (offsetBase.top - offset.top) + 'px'
         $item.css({
-            'background-image': 'url(/static/background.jpg)',
+            'background-image': 'url(static/background.jpg)',
             'background-position': position,
             'background-size': widthBase + 'px ' + heightBase + 'px'
         });
