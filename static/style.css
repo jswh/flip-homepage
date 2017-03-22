@@ -1,0 +1,28 @@
+* {
+    margin: none;
+    padding: none;
+    border: none;
+}
+#container {
+    height: 500px;
+    margin: auto;
+    max-width: 100%;
+}
+#container div {
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: 'Lato', sans-serif;
+}
+#container div a {
+    color: #333;
+    text-decoration: none;
+    text-align: center;
+    transition: color 500ms;
+    -moz-transition: color 500ms;	/* Firefox 4 */
+    -webkit-transition: color 500ms;	/* Safari 和 Chrome */
+    -o-transition: color 500ms;	/* Opera */
+}
+#container>div {
+    height: 100%;
+    float: left;
+}
