@@ -116,12 +116,20 @@ var blocks = {
     }
 }
 $(document).ready(function () {
-    if (window.innerWidth > 1024) {
+    if (window.innerHeight > 700) {
         desktop();
     }
-})
+});
+
+function mobile() {
+    var $container = $('#container');
+}
+
 function desktop() {
     var $container = $('#container');
+    if (window.innerWidth < 1024) {
+        $container.height(window.innerWidth * 0.45)
+    }
     var heightBase = $container.height();
     var widthBase = 0;
 
