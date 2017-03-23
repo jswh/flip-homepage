@@ -207,7 +207,7 @@ function desktop() {
     $container.width(widthBase)
     setTimeout(function() {
         setBlockBackground($container, widthBase, heightBase)
-    }, 50);
+    }, 100);
 
     function recaculatSize(css, cssAttrName, AttrDefaultValue, marginName) {
         if (css[cssAttrName] && css[cssAttrName].toString().indexOf('px') == -1) {
