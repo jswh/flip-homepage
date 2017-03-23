@@ -22,10 +22,12 @@
     -webkit-transition: color 500ms;	/* Safari 和 Chrome */
     -o-transition: color 500ms;	/* Opera */
 }
-#container div a h2 {
-    font-size: 100%;
-}
 #container>div {
     height: 100%;
     float: left;
+}
+@media (max-width: 1024px) {
+    #container div a h2 {
+        font-size: 100%;
+    }
 }

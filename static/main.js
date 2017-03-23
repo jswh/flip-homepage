@@ -118,11 +118,27 @@ var blocks = {
 $(document).ready(function () {
     if (window.innerWidth > 700) {
         desktop();
+    } else {
+        mobile();
     }
 });
 
 function mobile() {
     var $container = $('#container');
+    $container.css('width', '100%')
+    $container.css('height', 'auto');
+    var divCouter = 0;
+    for (var i in flipBlocks) {
+        var $div = $("<div></div>");
+        $div.css('width', '100%');
+        $div.css('height', '60%');
+        $div.css('margin-bottom', '5px')
+        setAsFlipBlock($div, flipBlocks[i].content);
+        $container.append($div);
+        divCouter ++;
+    }
+
+    setBlockBackground($container, 0, 0);
 }
 
 function desktop() {
@@ -180,13 +196,7 @@ function desktop() {
 
             var blockId = i + '-' + j;
             if (flipBlocks[blockId]) {
-                $front = $("<div class='front'></div>");
-                $back = $("<div class='back'></div>");
-                $back.html(flipBlocks[blockId].content);
-                $sub.append($front);
-                $sub.append($back);
-                setBlockFlip($sub);
-                setBlocFontRandomColor($sub);
+                setAsFlipBlock($sub, flipBlocks[blockId].content);
             }
 
             $div.append($sub);
@@ -206,7 +216,16 @@ function desktop() {
         return css;
     }
 }
-function setBlockBackground($container, widthBase, heightBase) {
+function setAsFlipBlock($sub, content) {
+    $front = $("<div class='front'></div>");
+    $back = $("<div class='back'></div>");
+    $back.html(content);
+    $sub.append($front);
+    $sub.append($back);
+    setBlockFlip($sub);
+    setBlocFontRandomColor($sub);
+}
+function setBlockBackground($container, widthBase, heightBase, background='static/background.jpg') {
     $('#container>div>div').each(function (i, item) {
         var offsetBase = $container.offset();
         var $item = $(item);
@@ -218,10 +237,14 @@ function setBlockBackground($container, widthBase, heightBase) {
         }
         var position = (offsetBase.left - offset.left) + 'px ' + (offsetBase.top - offset.top) + 'px'
         $item.css({
-            'background-image': 'url(static/background.jpg)',
-            'background-position': position,
+            'background-image': 'url(' + background + ')',
+            'background-position': position
+        });
+        if (widthBase > 0) {
+        $item.css({
             'background-size': widthBase + 'px ' + heightBase + 'px'
         });
+        }
     });
 }
 function setBlockFlip($block) {
