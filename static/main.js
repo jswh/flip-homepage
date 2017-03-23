@@ -116,7 +116,7 @@ var blocks = {
     }
 }
 $(document).ready(function () {
-    if (window.innerWidth > 700) {
+    if (window.innerWidth > 500) {
         desktop();
     } else {
         mobile();
