@@ -117,8 +117,8 @@ var blocks = {
 }
 $(document).ready(function () {
     setTimeout(function() {
-        $('#mask').fadeOut(300);
-    }, 200);
+        $('#mask').fadeOut(500);
+    }, 50);
     if (window.innerWidth > 500) {
         desktop();
     } else {
