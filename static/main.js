@@ -116,6 +116,11 @@ var blocks = {
     }
 }
 $(document).ready(function () {
+    if (window.innerWidth > 1024) {
+        desktop();
+    }
+})
+function desktop() {
     var $container = $('#container');
     var heightBase = $container.height();
     var widthBase = 0;
@@ -182,7 +187,18 @@ $(document).ready(function () {
     }
 
     $container.width(widthBase)
+    setBlockBackground($container, widthBase, heightBase)
 
+    function recaculatSize(css, cssAttrName, AttrDefaultValue, marginName) {
+        if (css[cssAttrName] && css[cssAttrName].toString().indexOf('px') == -1) {
+            css[marginName] = (margin + css[marginName] * AttrDefaultValue * (1 - cellCss[cssAttrName])) + 'px';
+            css[cssAttrName] = (AttrDefaultValue * css[cssAttrName]) + 'px';
+        }
+
+        return css;
+    }
+}
+function setBlockBackground($container, widthBase, heightBase) {
     $('#container>div>div').each(function (i, item) {
         var offsetBase = $container.offset();
         var $item = $(item);
@@ -199,47 +215,37 @@ $(document).ready(function () {
             'background-size': widthBase + 'px ' + heightBase + 'px'
         });
     });
-
-    function recaculatSize(css, cssAttrName, AttrDefaultValue, marginName) {
-        if (css[cssAttrName] && css[cssAttrName].toString().indexOf('px') == -1) {
-            css[marginName] = (margin + css[marginName] * AttrDefaultValue * (1 - cellCss[cssAttrName])) + 'px';
-            css[cssAttrName] = (AttrDefaultValue * css[cssAttrName]) + 'px';
-        }
-
-        return css;
-    }
-
-    function setBlockFlip($block) {
-        $block.flip({
-            axis: 'x',
-            trigger: 'manual',
-        });
-        var autoFlip = function () {
-            $block.flip('toggle')
-        };
-        var flipDelay = function () {
-            return 2000 + Math.random() * 4000;
-        };
-        var id = setInterval(autoFlip, flipDelay());
-        var onMouseenter = function() {
-            clearInterval(id);
-            $block.flip(true);
-            $block.one('mouseleave', function() {
-                $block.flip(false);
-                id = setInterval(autoFlip, flipDelay());
-                $block.one('mouseenter', onMouseenter)
-            })
-        };
-        $block.one('mouseenter', onMouseenter);
-        setTimeout(function() {
-            $block.flip('true');
-        }, Math.random() * 2000);
-    }
-    function setBlocFontRandomColor($block) {
-        var $a = $block.find('a');
-        setInterval(function () {
-            var color = randomColors[Math.floor(Math.random() * randomColors.length)];
-            $a.css({ color: color });
-        }, 3000)
-    }
-})
+}
+function setBlockFlip($block) {
+    $block.flip({
+        axis: 'x',
+        trigger: 'manual',
+    });
+    var autoFlip = function () {
+        $block.flip('toggle')
+    };
+    var flipDelay = function () {
+        return 2000 + Math.random() * 4000;
+    };
+    var id = setInterval(autoFlip, flipDelay());
+    var onMouseenter = function() {
+        clearInterval(id);
+        $block.flip(true);
+        $block.one('mouseleave', function() {
+            $block.flip(false);
+            id = setInterval(autoFlip, flipDelay());
+            $block.one('mouseenter', onMouseenter)
+        })
+    };
+    $block.one('mouseenter', onMouseenter);
+    setTimeout(function() {
+        $block.flip('true');
+    }, Math.random() * 2000);
+}
+function setBlocFontRandomColor($block) {
+    var $a = $block.find('a');
+    setInterval(function () {
+        var color = randomColors[Math.floor(Math.random() * randomColors.length)];
+        $a.css({ color: color });
+    }, 3000)
+}
