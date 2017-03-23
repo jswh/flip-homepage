@@ -4,7 +4,7 @@ var widthHeightRatio = 1.51;
 var randomColors = ['#1abc9c', '#3498db', '#9b59b6', '#34495e', '#34495e', '#e67e22', '#e74c3c'];
 var flipBlocks = {
     "5-2": {
-        content:"<a href='http://gallary.jswh.me'><h2>gallary<h2></a>"
+        content:"<a href='http://gallery.jswh.me'><h2>gallery<h2></a>"
     },
     "4-4": {
         content:"<a href='https://github.com/jswh'><h2>github<h2></a>"
