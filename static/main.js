@@ -116,14 +116,12 @@ var blocks = {
     }
 }
 $(document).ready(function () {
-    setTimeout(function() {
-        $('#mask').fadeOut(500);
-    }, 50);
     if (window.innerWidth > 500) {
         desktop();
     } else {
         mobile();
     }
+    $('#mask').fadeOut(500);
 });
 
 function mobile() {
