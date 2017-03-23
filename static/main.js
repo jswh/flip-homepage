@@ -146,75 +146,77 @@ function desktop() {
     if (window.innerWidth < 1024) {
         $container.height(window.innerWidth * 0.45)
     }
-    var heightBase = $container.height();
-    var widthBase = 0;
+    setTimeout(function () {
+        var heightBase = $container.height();
+        var widthBase = 0;
 
-    var cellHeight = heightBase / blocks.colSize - margin;
-    var cellWidth = cellHeight * widthHeightRatio
+        var cellHeight = heightBase / blocks.colSize - margin;
+        var cellWidth = cellHeight * widthHeightRatio
 
-    for (var i = 1; i <= blocks.rowSize; i ++) {
-        var $div = $("<div></div>");
-        var rowSetting = {
-            width: cellWidth,
-            margin: margin
-        }
-        var cssTestees = ['width', 'margin']
-        //set special rowSetting
-        cssTestees.forEach(function(testee) {
-            if (blocks.specials[i] && blocks.specials[i][testee]) {
-                rowSetting[testee] = rowSetting[testee] * blocks.specials[i][testee]
+        for (var i = 1; i <= blocks.rowSize; i++) {
+            var $div = $("<div></div>");
+            var rowSetting = {
+                width: cellWidth,
+                margin: margin
             }
-        });
-        //get the row base
-        widthBase = widthBase + rowSetting.width + rowSetting.margin;
-        //create row
-        $div.css({
-            'width': rowSetting.width + 'px',
-            'margin-left': rowSetting.margin + 'px'
-        });
-        //create blocs of this row
-        for (var j = 1; j <= blocks.colSize; j ++) {
-            var $sub = $("<div></div>");
-            $sub.css({
-                'display': 'block',
-                'height': cellHeight,
-                'margin': margin + 'px 0 0 0'
-            })
-            var cellCss = null;
-            if (blocks.specials[i]) {
-                if (blocks.specials[i][j]) {
-                    cellCss = blocks.specials[i][j]
-                    cellCss = recaculatSize(cellCss, 'height', cellHeight, 'margin-top')
-                    cellCss = recaculatSize(cellCss, 'width', cellWidth, 'margin-left')
-                    $sub.css(cellCss)
-                } else if (blocks.specials[i]['subStyleDefault']) {
-                    cellCss = blocks.specials[i]['subStyleDefault']
-                    cellCss = recaculatSize(cellCss, 'height', cellHeight, 'margin-top')
-                    $sub.css(cellCss)
+            var cssTestees = ['width', 'margin']
+            //set special rowSetting
+            cssTestees.forEach(function (testee) {
+                if (blocks.specials[i] && blocks.specials[i][testee]) {
+                    rowSetting[testee] = rowSetting[testee] * blocks.specials[i][testee]
                 }
+            });
+            //get the row base
+            widthBase = widthBase + rowSetting.width + rowSetting.margin;
+            //create row
+            $div.css({
+                'width': rowSetting.width + 'px',
+                'margin-left': rowSetting.margin + 'px'
+            });
+            //create blocs of this row
+            for (var j = 1; j <= blocks.colSize; j++) {
+                var $sub = $("<div></div>");
+                $sub.css({
+                    'display': 'block',
+                    'height': cellHeight,
+                    'margin': margin + 'px 0 0 0'
+                })
+                var cellCss = null;
+                if (blocks.specials[i]) {
+                    if (blocks.specials[i][j]) {
+                        cellCss = blocks.specials[i][j]
+                        cellCss = recaculatSize(cellCss, 'height', cellHeight, 'margin-top')
+                        cellCss = recaculatSize(cellCss, 'width', cellWidth, 'margin-left')
+                        $sub.css(cellCss)
+                    } else if (blocks.specials[i]['subStyleDefault']) {
+                        cellCss = blocks.specials[i]['subStyleDefault']
+                        cellCss = recaculatSize(cellCss, 'height', cellHeight, 'margin-top')
+                        $sub.css(cellCss)
+                    }
+                }
+
+                var blockId = i + '-' + j;
+                if (flipBlocks[blockId]) {
+                    setAsFlipBlock($sub, flipBlocks[blockId].content);
+                }
+
+                $div.append($sub);
+            }
+            $container.append($div);
+        }
+
+        $container.width(widthBase)
+        setBlockBackground($container, widthBase, heightBase)
+
+        function recaculatSize(css, cssAttrName, AttrDefaultValue, marginName) {
+            if (css[cssAttrName] && css[cssAttrName].toString().indexOf('px') == -1) {
+                css[marginName] = (margin + css[marginName] * AttrDefaultValue * (1 - cellCss[cssAttrName])) + 'px';
+                css[cssAttrName] = (AttrDefaultValue * css[cssAttrName]) + 'px';
             }
 
-            var blockId = i + '-' + j;
-            if (flipBlocks[blockId]) {
-                setAsFlipBlock($sub, flipBlocks[blockId].content);
-            }
-
-            $div.append($sub);
+            return css;
         }
-        $container.append($div);
-    }
-
-    $container.width(widthBase)
-    setBlockBackground($container, widthBase, heightBase)
-
-    function recaculatSize(css, cssAttrName, AttrDefaultValue, marginName) {
-        if (css[cssAttrName] && css[cssAttrName].toString().indexOf('px') == -1) {
-            css[marginName] = (margin + css[marginName] * AttrDefaultValue * (1 - cellCss[cssAttrName])) + 'px';
-            css[cssAttrName] = (AttrDefaultValue * css[cssAttrName]) + 'px';
-        }
-
-        return css;
-    }
+    }, 50);
 }
 function setAsFlipBlock($sub, content) {
     $front = $("<div class='front'></div>");
