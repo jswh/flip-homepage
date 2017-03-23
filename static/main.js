@@ -121,8 +121,10 @@ $(document).ready(function () {
     } else {
         mobile();
     }
-    $('#mask img').fadeOut(100);
-    $('#mask').fadeOut(500);
+    setTimeout(function() {
+        $('#mask img').fadeOut(100);
+        $('#mask').fadeOut(500);
+    }, 100);
 });
 
 function mobile() {
