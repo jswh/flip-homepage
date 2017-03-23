@@ -3,6 +3,9 @@
     padding: none;
     border: none;
 }
+html {
+    background: #ecf0f1;
+}
 #container {
     height: 500px;
     margin: auto;
