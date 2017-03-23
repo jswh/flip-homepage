@@ -121,6 +121,7 @@ $(document).ready(function () {
     } else {
         mobile();
     }
+    $('#mask img').fadeOut(100);
     $('#mask').fadeOut(500);
 });
 
