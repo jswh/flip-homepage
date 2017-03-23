@@ -150,8 +150,9 @@ function desktop() {
     var widthBase = 0;
 
     var cellHeight = heightBase / blocks.colSize - margin;
-    var cellWidth = cellHeight * widthHeightRatio
+    var cellWidth = cellHeight * widthHeightRatio;
 
+    var subDivs = [];
     for (var i = 1; i <= blocks.rowSize; i ++) {
         var $div = $("<div></div>");
         var rowSetting = {
@@ -201,10 +202,11 @@ function desktop() {
 
             $div.append($sub);
         }
-        $container.append($div);
+        subDivs.push($div);
     }
 
-    $container.width(widthBase)
+    $container.width(widthBase);
+    $container.append(subDivs);
     setTimeout(function() {
         setBlockBackground($container, widthBase, heightBase)
     }, 100);
