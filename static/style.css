@@ -30,7 +30,7 @@ html {
     float: left;
 }
  #container .front {
-    background-image: url(static/background.jpg);
+    background-image: url(background.jpg);
 }
 #container .back {
     background-color: #fff;
