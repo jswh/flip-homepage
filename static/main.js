@@ -200,6 +200,8 @@ function desktop() {
             var blockId = i + '-' + j;
             if (flipBlocks[blockId]) {
                 setAsFlipBlock($sub, flipBlocks[blockId].content);
+            } else {
+                $sub.addClass('front')
             }
 
             $div.append($sub);
@@ -231,7 +233,7 @@ function setAsFlipBlock($sub, content) {
     setBlockFlip($sub);
     setBlocFontRandomColor($sub);
 }
-function setBlockBackground($container, widthBase, heightBase, background='static/background.jpg') {
+function setBlockBackground($container, widthBase, heightBase) {
     $('#container>div>div').each(function (i, item) {
         var offsetBase = $container.offset();
         var $item = $(item);
@@ -243,7 +245,6 @@ function setBlockBackground($container, widthBase, heightBase, background='stati
         }
         var position = (offsetBase.left - offset.left) + 'px ' + (offsetBase.top - offset.top) + 'px'
         $item.css({
-            'background-image': 'url(' + background + ')',
             'background-position': position
         });
         if (widthBase > 0) {

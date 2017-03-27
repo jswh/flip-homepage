@@ -29,6 +29,12 @@ html {
     height: 100%;
     float: left;
 }
+ #container .front {
+    background-image: url(static/background.jpg);
+}
+#container .back {
+    background-color: #fff;
+}
 @media (max-width: 1024px) {
     #container div a h2 {
         font-size: 100%;
