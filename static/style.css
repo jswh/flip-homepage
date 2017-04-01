@@ -52,3 +52,13 @@ html {
 #mask img {
     margin-top: 5em;
 }
+#copyright {
+    display: block;
+    text-align: center;
+    position: absolute;
+    bottom: 1em;
+    width: 100%;
+    color: #999;
+    font-family: 'Lato', sans-serif;
+    font-size: small;
+}
