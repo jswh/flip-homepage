@@ -3,7 +3,7 @@ var margin = 5;
 var widthHeightRatio = 1.51;
 var randomColors = ['#1abc9c', '#3498db', '#9b59b6', '#34495e', '#34495e', '#e67e22', '#e74c3c'];
 var flipBlocks = {
-    "5-2": {
+    "5-1": {
         content:"<a href='https://500px.com/jswh'><h2>500px<h2></a>"
     },
     "4-4": {
@@ -14,6 +14,9 @@ var flipBlocks = {
     },
     "7-3": {
         content:"<a href='http://blog.jswh.me'><h2>blog<h2></a>"
+    },
+    "6-6": {
+        content:"<a href='/tools.html'><h2>tools</h2></a>"
     }
 };
 var blocks = {
