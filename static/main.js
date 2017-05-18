@@ -17,7 +17,7 @@ var flipBlocks = {
     },
     "6-6": {
         content:"<a href='/tools.html'><h2>tools</h2></a>"
-    }
+    },
 };
 var blocks = {
     rowSize: 11,
