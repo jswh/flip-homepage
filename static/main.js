@@ -12,7 +12,7 @@ var flipBlocks = {
     "9-5": {
         content:"<a href='http://www.linkedin.com/in/%E6%9B%B9-%E7%BB%B4%E6%9D%B0-a46255117/'><h2>linkedin<h2></a>"
     },
-    "7-3": {
+    "8-2": {
         content:"<a href='http://blog.jswh.me'><h2>blog<h2></a>"
     },
     "6-6": {
