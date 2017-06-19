@@ -1,6 +1,6 @@
 var rowsSize = 11;
 var margin = 5;
-var widthHeightRatio = 1.51;
+var widthHeightRatio = 1.1;
 var randomColors = ['#1abc9c', '#3498db', '#9b59b6', '#34495e', '#34495e', '#e67e22', '#e74c3c'];
 var flipBlocks = {
     "5-1": {

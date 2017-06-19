@@ -4,7 +4,7 @@
     border: none;
 }
 html {
-    background: #ecf0f1;
+    background: rgba(107, 30, 30, 0.57);
 }
 #container {
     height: 500px;
