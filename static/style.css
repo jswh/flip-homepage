@@ -1,7 +1,7 @@
 * {
-    margin: none;
-    padding: none;
-    border: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 html {
     background: rgba(107, 30, 30, 0.57);
@@ -54,11 +54,11 @@ html {
 }
 #copyright {
     display: block;
-    text-align: center;
+    text-align: right;
     position: absolute;
     bottom: 1em;
     width: 100%;
-    color: #999;
+    color: #eee;
     font-family: 'Lato', sans-serif;
     font-size: small;
 }
